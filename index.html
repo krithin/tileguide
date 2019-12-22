@@ -1,0 +1,18 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<title>Tile Boundary Viewer</title>
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
+	</head>
+	<body>
+		<div id='map' style='width:100%;height:100%;'></div>
+		<script>
+		mapboxgl.accessToken = '<access token goes here>';
+		var map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/mapbox/streets-v9'
+		});
+		</script>
+	</body>
+</html>

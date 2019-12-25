@@ -13,6 +13,17 @@
 			container: 'map',
 			style: 'mapbox://styles/mapbox/streets-v9'
 		});
+		map.on('load', () => {
+			map.addLayer({
+				'id': 'centers',
+				'type': 'circle',
+				'source': {
+					type: 'vector',
+					tiles: ['http://localhost:8080/tileguide/{z}/{x}/{y}.mvt',]
+				},
+				'source-layer': 'centers',
+			});
+		});
 		</script>
 	</body>
 </html>

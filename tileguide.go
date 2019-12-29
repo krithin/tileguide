@@ -33,10 +33,13 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			if y64, err := strconv.ParseUint(s[3], 10, 32); err == nil {
 				x, y, z = uint32(x64), uint32(y64), uint32(z64)
 				tile = maptile.New(x, y, maptile.Zoom(z))
-				center := tile.Center()
-				centers.Append(geojson.NewFeature(center))
-				border := tile.Bound().ToPolygon()
-				borders.Append(geojson.NewFeature(border))
+				center := geojson.NewFeature(tile.Center())
+				center.Properties = geojson.Properties{
+					"x": x, "y": y, "z": z,
+				}
+				centers.Append(center)
+				border := geojson.NewFeature(tile.Bound().ToPolygon())
+				borders.Append(border)
 			}
 		}
 	}

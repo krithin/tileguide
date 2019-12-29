@@ -16,6 +16,7 @@ var /* const */ tilePattern = regexp.MustCompile("/([0-9]+)/([0-9]+)/([0-9]+).mv
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "application/vnd.mapbox-vector-tile")
 
 	s := tilePattern.FindStringSubmatch(r.URL.Path)
 	if len(s) != 4 {

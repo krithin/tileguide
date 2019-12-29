@@ -14,14 +14,21 @@
 			style: 'mapbox://styles/mapbox/streets-v9'
 		});
 		map.on('load', () => {
+			map.addSource('tileguide', {
+				type: 'vector',
+				tiles: ['http://localhost:8080/tileguide/{z}/{x}/{y}.mvt',]
+			});
 			map.addLayer({
 				'id': 'centers',
 				'type': 'circle',
-				'source': {
-					type: 'vector',
-					tiles: ['http://localhost:8080/tileguide/{z}/{x}/{y}.mvt',]
-				},
+				'source': 'tileguide',
 				'source-layer': 'centers',
+			});
+			map.addLayer({
+				'id': 'borders',
+				'type': 'line',
+				'source': 'tileguide',
+				'source-layer': 'borders',
 			});
 		});
 		</script>

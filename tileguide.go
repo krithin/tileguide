@@ -26,20 +26,24 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	var x, y, z uint32
 	var tile maptile.Tile
 	
-	fc := geojson.NewFeatureCollection()
+	centers := geojson.NewFeatureCollection()
+	borders := geojson.NewFeatureCollection()
 	if z64, err := strconv.ParseUint(s[1], 10, 32); err == nil {
 		if x64, err := strconv.ParseUint(s[2], 10, 32); err == nil {
 			if y64, err := strconv.ParseUint(s[3], 10, 32); err == nil {
 				x, y, z = uint32(x64), uint32(y64), uint32(z64)
 				tile = maptile.New(x, y, maptile.Zoom(z))
 				center := tile.Center()
-				fc.Append(geojson.NewFeature(center))
+				centers.Append(geojson.NewFeature(center))
+				border := tile.Bound().ToPolygon()
+				borders.Append(geojson.NewFeature(border))
 			}
 		}
 	}
 
 	collections := map[string]*geojson.FeatureCollection{
-		"centers": fc,
+		"centers": centers,
+		"borders": borders,
 	}
 	layers := mvt.NewLayers(collections)
 	layers.ProjectToTile(tile)

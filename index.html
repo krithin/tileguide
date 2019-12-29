@@ -9,6 +9,7 @@
 		<div id='map' style='width:100%;height:100%;'></div>
 		<script>
 		mapboxgl.accessToken = '<access token goes here>';
+		tileguide_server_url = 'http://localhost:8080'
 		var map = new mapboxgl.Map({
 			container: 'map',
 			style: 'mapbox://styles/mapbox/streets-v9'
@@ -16,7 +17,7 @@
 		map.on('load', () => {
 			map.addSource('tileguide', {
 				type: 'vector',
-				tiles: ['http://localhost:8080/tileguide/{z}/{x}/{y}.mvt',]
+				tiles: [tileguide_server_url + '/tileguide/{z}/{x}/{y}.mvt',]
 			});
 			map.addLayer({
 				'id': 'centers',

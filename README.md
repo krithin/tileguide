@@ -24,11 +24,11 @@ Alternatively, deploy it for yourself with Docker.
 1. Move `index.html` somewhere where your HTTP server can read from it.
 
 1. Modify `index.html`:
-	a. Set `mapboxgl.accessToken` to your [Mapbox access token](https://docs.mapbox.com/help/how-mapbox-works/access-tokens/)
-	b. Set `tileguide_server_url` to point to your tileguide server from step 1.
+	1. Set `mapboxgl.accessToken` to your [Mapbox access token](https://docs.mapbox.com/help/how-mapbox-works/access-tokens/)
+	1. Set `tileguide_server_url` to point to your tileguide server from step 1.
 
 That's it!
 
 ### Manual deploy
 
-As an alternative to the docker build you can also clone this directory into your `$GOPATH` and use standard golang tooling (`go get && go build`) to build the server.
+As an alternative to the docker build you can also clone this repository into your `$GOPATH` and use standard golang tooling (`go get && go build`) to build the server.

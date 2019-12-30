@@ -17,9 +17,10 @@ Alternatively, deploy it for yourself with Docker.
 ### Deploy with docker
 
 1. Set up the tileguide server:
-
+    ```
     docker build -t tileguide .
     docker run --rm -p 8080:8080 tileguide:latest
+    ```
 
 1. Move `index.html` somewhere where your HTTP server can read from it.
 

@@ -18,9 +18,10 @@ Alternatively, deploy it for yourself with Docker.
 
 1. Set up the tileguide server:
     ```
-    docker build -t tileguide .
-    docker run --rm -p 8080:8080 tileguide:latest
+    docker build -t krithin/tileguide .
+    docker run --rm -p 8080:8080 krithin/tileguide:latest
     ```
+    Optionally, instead of using 'docker run' you can set up a systemd service to run this container on startup, using the included tileguide.service file.
 
 1. Move `index.html` somewhere where your HTTP server can read from it.
 
@@ -32,4 +33,4 @@ That's it!
 
 ### Manual deploy
 
-As an alternative to the docker build you can also clone this repository into your `$GOPATH` and use standard golang tooling (`go get && go build`) to build the server.
+As an alternative to the docker build you can also clone this repository into your `$GOPATH` and use standard golang tooling (`go install && go build`) to build the server.
